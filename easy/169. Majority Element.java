@@ -27,10 +27,10 @@ import java.util.stream.*;
 
 class Solution {
     public int majorityElement(int[] nums) {
-        Map<Integer, Long> numbersWithCounts = Arrays
+        Map<Integer, Integer> numbersWithCounts = Arrays
                 .stream(nums)
                 .boxed()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(i -> 1)));
 
         return Collections
                 .max(numbersWithCounts.entrySet(), Map.Entry.comparingByValue())
