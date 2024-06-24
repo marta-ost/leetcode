@@ -23,7 +23,7 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
 
 class Solution {
     public boolean isAnagram(String s, String t) {
-        return sortAlphabetically(s).equals(sortAlphabetically(t));
+        return s.length() != t.length() ? false : sortAlphabetically(s).equals(sortAlphabetically(t));
     }
 
     private String sortAlphabetically(String word) {
