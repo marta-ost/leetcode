@@ -22,18 +22,16 @@ n == nums.length
 Follow-up: Could you solve the problem in linear time and in O(1) space?
 */
 
-import java.util.*;
-import java.util.stream.*;
-
 class Solution {
     public int majorityElement(int[] nums) {
-        Map<Integer, Integer> numbersWithCounts = Arrays
+        return Arrays
                 .stream(nums)
                 .boxed()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(i -> 1)));
-
-        return Collections
-                .max(numbersWithCounts.entrySet(), Map.Entry.comparingByValue())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .get()
                 .getKey();
     }
 }
