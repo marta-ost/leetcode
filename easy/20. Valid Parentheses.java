@@ -30,7 +30,6 @@ s consists of parentheses only '()[]{}'.
 
 class Solution {
     public boolean isValid(String s) {
-        s = s.replaceAll("[^\\[\\](){}]", "");
         while (s.contains("()") || s.contains("[]") || s.contains("{}")) {
             s = s.replace("{}", "");
             s = s.replace("[]", "");
